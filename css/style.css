@@ -233,7 +233,7 @@ header {
   font-size: clamp(42px, 7vw, 84px);
   line-height: 0.98;
   letter-spacing: 0.01em;
-  max-width: 15ch;
+  max-width: 17ch;   /* fits the accent phrase on one line at full size */
 }
 
 .hero h1 .accent { color: var(--signal); }
