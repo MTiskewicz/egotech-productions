@@ -173,6 +173,14 @@ header {
 /* Second pass along the venue tape's top edge, trailing the header sweep. */
 .laser-sweep-tape { animation-delay: 0.8s; }
 
+/* Plain text, pitched to match the nav links rather than the CTA button. */
+.nav-phone {
+  font-size: 14px;
+  color: var(--text-mute);
+  transition: color 0.15s ease;
+}
+.nav-phone:hover, .nav-phone:focus-visible { color: var(--text); }
+
 .nav-cta {
   border: 1px solid var(--signal);
   color: var(--text);
