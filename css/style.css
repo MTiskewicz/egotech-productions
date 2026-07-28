@@ -170,6 +170,9 @@ header {
   100% { left: 105%; opacity: 0; }
 }
 
+/* Second pass along the venue tape's top edge, trailing the header sweep. */
+.laser-sweep-tape { animation-delay: 0.8s; }
+
 .nav-cta {
   border: 1px solid var(--signal);
   color: var(--text);
@@ -440,6 +443,7 @@ section { padding: 100px 0; }
 /* ---------- Venue tape (marquee of places worked) ---------- */
 
 .venue-tape {
+  position: relative;   /* containing block for the laser sweep */
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 26px 0;
