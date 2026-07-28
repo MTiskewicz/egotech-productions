@@ -88,6 +88,7 @@ header {
   background: rgba(21, 24, 27, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  overflow: hidden;   /* contains the laser sweep as it exits right */
 }
 
 .nav {
@@ -167,6 +168,12 @@ header {
   55%  { opacity: 0.9; }
   90%  { opacity: 0; }
   100% { left: 105%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Drop the sweep entirely; keep the hover underline but show it instantly. */
+  .laser-sweep { display: none; }
+  .nav-links a::after { transition: none; }
 }
 
 .nav-cta {
