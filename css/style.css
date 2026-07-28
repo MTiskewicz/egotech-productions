@@ -398,14 +398,24 @@ section { padding: 100px 0; }
   letter-spacing: 0.03em;
 }
 
+/* The why section runs three panels, not four, so it gets its own column count. */
+#why .panels { grid-template-columns: repeat(3, 1fr); }
+#why .panel:nth-child(3n) { border-right: none; }
+
 @media (max-width: 900px) {
   .panels { grid-template-columns: repeat(2, 1fr); }
   .panel:nth-child(4n) { border-right: 1px solid var(--line); }
   .panel:nth-child(2n) { border-right: none; }
+
+  #why .panels { grid-template-columns: repeat(2, 1fr); }
+  #why .panel:nth-child(2n) { border-right: none; }
+  #why .panel:nth-child(3) { grid-column: 1 / -1; }   /* fills the odd row */
 }
 @media (max-width: 560px) {
   .panels { grid-template-columns: 1fr; }
   .panel { border-right: none !important; }
+
+  #why .panels { grid-template-columns: 1fr; }
 }
 
 /* ---------- Included-in-every-wall-rental list ---------- */
