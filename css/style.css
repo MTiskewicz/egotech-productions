@@ -88,7 +88,6 @@ header {
   background: rgba(21, 24, 27, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
-  overflow: hidden;   /* contains the laser sweep as it exits right */
 }
 
 .nav {
@@ -168,12 +167,6 @@ header {
   55%  { opacity: 0.9; }
   90%  { opacity: 0; }
   100% { left: 105%; opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  /* Drop the sweep entirely; keep the hover underline but show it instantly. */
-  .laser-sweep { display: none; }
-  .nav-links a::after { transition: none; }
 }
 
 .nav-cta {
@@ -450,7 +443,28 @@ section { padding: 100px 0; }
   border-bottom: 1px solid var(--line);
   padding: 26px 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.venue-tape-label {
+  flex-shrink: 0;
+  padding-left: 32px;
+  padding-right: 24px;
+  border-right: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--calib);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   white-space: nowrap;
+}
+
+.venue-tape-scroll {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
 }
 
 .venue-tape .track {
@@ -469,6 +483,10 @@ section { padding: 100px 0; }
 @keyframes scroll-left {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .venue-tape-label { padding-left: 20px; padding-right: 16px; font-size: 11px; }
 }
 
 /* ---------- Gallery ---------- */
