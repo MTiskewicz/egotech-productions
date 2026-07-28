@@ -16,6 +16,7 @@
   --text-mute: #8d949c;
   --signal: #e8433d;      /* tally-light red — rec/live indicator */
   --calib: #3f8cff;       /* calibration blue — LED wall test-pattern blue */
+  --laser: #39ff6a;       /* laser green — nod to the laser rig / "Laser Bob" */
   --success: #3ecf8e;
 
   /* Type */
@@ -125,8 +126,48 @@ header {
   font-weight: 500;
 }
 
-.nav-links a { color: var(--text-mute); transition: color 0.15s ease; }
+.nav-links a {
+  position: relative;
+  color: var(--text-mute);
+  padding-bottom: 6px;
+  transition: color 0.15s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--laser);
+  box-shadow: 0 0 6px 0.5px rgba(57, 255, 106, 0.85);
+  transition: width 0.22s ease-out;
+}
 .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+.nav-links a:hover::after, .nav-links a:focus-visible::after { width: 100%; }
+
+/* ---------- Laser sweep — a single pass across the header on load ---------- */
+
+.laser-sweep {
+  position: absolute;
+  top: 0;
+  left: -15%;
+  width: 12%;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--laser) 45%, var(--laser) 55%, transparent);
+  box-shadow: 0 0 8px 1px rgba(57, 255, 106, 0.9);
+  opacity: 0;
+  animation: laser-sweep-run 2.4s ease-in-out 0.4s 1 both;
+}
+
+@keyframes laser-sweep-run {
+  0%   { left: -15%; opacity: 0; }
+  6%   { opacity: 1; }
+  55%  { opacity: 0.9; }
+  90%  { opacity: 0; }
+  100% { left: 105%; opacity: 0; }
+}
 
 .nav-cta {
   border: 1px solid var(--signal);
